@@ -1,0 +1,10 @@
+# Local settings (contains hardcoded paths)
+.claude/settings.local.json
+
+# Tool caches
+.firecrawl/
+.playwright-mcp/
+.ruff_cache/
+
+# OS files
+.DS_Store
