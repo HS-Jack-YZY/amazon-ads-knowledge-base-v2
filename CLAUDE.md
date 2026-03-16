@@ -1,14 +1,16 @@
 # AdsAPI Project
 
-Amazon Advertising API + AMC 综合知识库项目。
+Amazon Advertising API + AMC + Selling Partner API 综合知识库项目。
 
 ## Agents
 
 - **ads-expert** (`.claude/agents/ads-expert.md`): Amazon Ads 综合专家，自动识别 API 和 AMC 相关对话，提供 API 问答、SQL 编写和知识问答
+- **sp-expert** (`.claude/agents/sp-expert.md`): Amazon SP-API 综合专家，自动识别卖家运营 API 相关对话（订单、库存、Listing、FBA、报告等）
 
 ## Commands
 
 - `/ads <question>`: Amazon Ads 综合助手，自动判断问题类型（API 调用 / AMC SQL / 概念问答）
+- `/sp <question>`: Amazon SP-API 综合助手，自动判断问题类型（API 调用 / 业务操作 / 概念问答）
 
 ## Knowledge Base
 
@@ -99,6 +101,33 @@ v1 通用模型下 5 个 entity 的参数矩阵和嵌套对象详解：
 3. 编写 SQL 时严格遵守聚合阈值规则（VERY_HIGH 字段不能出现在最终 SELECT）
 
 推荐使用 `ads-expert` agent（对话中提及广告相关话题时自动调度），也可以使用 `/ads` 命令手动进入助手模式。
+
+### Selling Partner API（卖家运营层面）
+
+位于 `knowledge_base/selling-partner-api/`，涵盖：
+
+- 概念文档（SP-API 概述、与 Ads API 对比）
+- 认证指南（OAuth 流程、Header 格式差异、RDT、Grantless Operations）
+- 区域端点和 Marketplace ID 完整参考
+- Rate Limit（Token Bucket 算法）和错误处理
+
+#### 核心业务 API（resources/）
+
+| 文件 | API | 说明 |
+|------|-----|------|
+| `resources/orders.md` | Orders API | 订单查询、状态、发货确认 |
+| `resources/reports.md` | Reports API | 100+ 种报告类型、创建/下载流程 |
+| `resources/catalog-items.md` | Catalog Items API | ASIN 详情、商品搜索 |
+| `resources/listings-items.md` | Listings Items API | Listing CRUD、PUT vs PATCH |
+| `resources/product-pricing.md` | Product Pricing API | 竞品价格、Buy Box |
+| `resources/fba-inventory.md` | FBA Inventory API | FBA 库存 5 种状态 |
+| `resources/fulfillment-inbound.md` | Fulfillment Inbound API | FBA 入仓 9 步流程 |
+| `resources/finances.md` | Finances API | 财务交易查询 |
+| `resources/data-kiosk.md` | Data Kiosk API | GraphQL 自定义数据查询 |
+| `resources/feeds.md` | Feeds API | 批量数据上传 |
+| `resources/notifications.md` | Notifications API | 事件推送订阅 |
+
+推荐使用 `sp-expert` agent（对话中提及卖家运营 API 话题时自动调度），也可以使用 `/sp` 命令手动进入助手模式。
 
 ### 更新知识库
 
