@@ -69,14 +69,27 @@ knowledge_base/
 
 ## 安装
 
-1. 克隆仓库到你的项目目录：
+### 方式一：安装到已有项目（推荐）
+
+```bash
+cd ~/your-project
+git clone https://github.com/HS-Jack-YZY/amazon-ads-knowledge-base-v2.git
+./amazon-ads-knowledge-base-v2/install.sh
+```
+
+安装脚本会自动将知识库、agent、command 复制到项目根目录的正确位置，并更新 `CLAUDE.md`。安装完成后可以删除 clone 的子目录：
+
+```bash
+rm -rf amazon-ads-knowledge-base-v2
+```
+
+### 方式二：直接作为独立项目使用
 
 ```bash
 git clone https://github.com/HS-Jack-YZY/amazon-ads-knowledge-base-v2.git
 cd amazon-ads-knowledge-base-v2
+# 直接在此目录下使用 Claude Code
 ```
-
-2. 安装完成。Claude Code 在该目录下会自动加载 `CLAUDE.md`、agent 和 command。
 
 ## 使用方式
 
@@ -157,12 +170,27 @@ A comprehensive Amazon Advertising knowledge base designed for [Claude Code](htt
 
 ### Installation
 
+#### Option 1: Install into an existing project (recommended)
+
+```bash
+cd ~/your-project
+git clone https://github.com/HS-Jack-YZY/amazon-ads-knowledge-base-v2.git
+./amazon-ads-knowledge-base-v2/install.sh
+```
+
+The install script copies the knowledge base, agent, and command to the correct locations in your project root, and updates `CLAUDE.md`. You can remove the cloned subdirectory after installation:
+
+```bash
+rm -rf amazon-ads-knowledge-base-v2
+```
+
+#### Option 2: Use as a standalone project
+
 ```bash
 git clone https://github.com/HS-Jack-YZY/amazon-ads-knowledge-base-v2.git
 cd amazon-ads-knowledge-base-v2
+# Use Claude Code directly in this directory
 ```
-
-Claude Code automatically loads `CLAUDE.md`, the agent, and the command when working in this directory.
 
 ### Usage
 
