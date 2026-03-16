@@ -106,6 +106,6 @@ def call_with_retry(func, max_retries=5):
 |--|--------|---------|
 | **算法** | Token Bucket | Token Bucket |
 | **限流响应** | 429 | 429 |
-| **Rate 响应头** | `x-amzn-RateLimit-Limit` | `x-amzn-RateLimit-Limit` |
+| **Rate 响应头** | `x-amzn-RateLimit-Limit`（每秒请求数） | `Retry-After`（等待秒数） |
 | **Dynamic Plan** | 有（基于业务量） | 无 |
 | **粒度** | 每个 Seller + App | 每个 Advertiser + App |
