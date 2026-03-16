@@ -1,6 +1,6 @@
-# Amazon Ads Knowledge Base for Claude Code
+# Amazon Ads & SP-API Knowledge Base for Claude Code
 
-一个为 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 设计的 Amazon Advertising 综合知识库。安装后，Claude 可以回答 Amazon Ads API 问题、编写 AMC SQL 查询、解释广告平台概念。
+一个为 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 设计的 Amazon Advertising + Selling Partner API 综合知识库。安装后，Claude 可以回答 Amazon Ads API 问题、编写 AMC SQL 查询、查询 SP-API 端点用法、解释广告和卖家平台概念。
 
 [English](#english)
 
@@ -8,52 +8,64 @@
 
 ## 项目简介
 
-本知识库整合了两大领域：
+本知识库整合了三大领域：
 
-- **Amazon Ads API** — 所有广告产品的 API 端点、认证方式、数据模型（56 个文档）
+- **Amazon Ads API** — 所有广告产品的 API 端点、认证方式、数据模型、实操指南（83 个文档）
 - **Amazon Marketing Cloud (AMC)** — 19 张数据表 schema、SQL 语法参考、平台概念（27 个文档）
+- **Selling Partner API (SP-API)** — 卖家运营核心 API：订单、库存、Listing、报告、Feeds 等（17 个文档）
 
 ## 目录结构
 
 ```
 knowledge_base/
-├── amazon-ads-api/          # API 文档（56 个文件）
+├── amazon-ads-api/          # Ads API 文档（83 个文件）
 │   ├── INDEX.md             # 总索引
 │   ├── QUICK-REFERENCE.md   # 快速参考
 │   ├── concepts/            # 错误处理、限流、配额、版本策略
 │   ├── common-models/       # Campaigns、Ad Groups、Targets、Ads
-│   ├── guides/              # OAuth 认证指南
-│   └── resources/           # 各产品 API 端点（SP、SB、SD、DSP、AMC 等）
-└── amc/                     # AMC 领域知识（27 个文件）
-    ├── README.md            # 表索引 + SQL 技巧 + 示例查询
-    ├── concepts/            # 概述、聚合阈值、API 指南、工作流管理
-    ├── sql_reference/       # 函数、表达式、限制
-    ├── dsp/                 # DSP 流量表 schema
-    ├── conversions/         # 转化表 schema
-    ├── sponsored_ads/       # 赞助广告表 schema
-    ├── paid_features/       # 付费功能表 schema
-    └── amazon_live/         # Amazon Live 表 schema
+│   ├── guides/              # OAuth 认证、端点参考、代码示例、Entity 参数、Reporting v3、Exports、Marketing Stream
+│   ├── resources/           # 各产品 API 端点（SP、SB、SD、DSP、AMC 等）+ v1 CRUD 参考
+│   └── amazon-ads-v1/       # v1 通用模型
+├── amc/                     # AMC 领域知识（27 个文件）
+│   ├── README.md            # 表索引 + SQL 技巧 + 示例查询
+│   ├── concepts/            # 概述、聚合阈值、API 指南、工作流管理
+│   ├── sql_reference/       # 函数、表达式、限制
+│   ├── dsp/                 # DSP 流量表 schema
+│   ├── conversions/         # 转化表 schema
+│   ├── sponsored_ads/       # 赞助广告表 schema
+│   ├── paid_features/       # 付费功能表 schema
+│   └── amazon_live/         # Amazon Live 表 schema
+└── selling-partner-api/     # SP-API 文档（17 个文件）
+    ├── INDEX.md             # SP-API 总索引 + 快速参考
+    ├── concepts/            # 概述、认证、端点、限流、错误处理
+    └── resources/           # 核心业务 API（Orders、Reports、Catalog 等）
 
 .claude/
-├── agents/ads-expert.md     # ads-expert agent（自动调度）
-├── commands/ads.md          # /ads 命令（手动调用）
+├── agents/
+│   ├── ads-expert.md        # ads-expert agent（Ads API + AMC，自动调度）
+│   └── sp-expert.md         # sp-expert agent（SP-API，自动调度）
+├── commands/
+│   ├── ads.md               # /ads 命令（手动调用）
+│   └── sp.md                # /sp 命令（手动调用）
 └── skills/learned/          # 已学技能
 ```
 
 ## 包含内容
 
-### Amazon Ads API（56 个文件）
+### Amazon Ads API（83 个文件）
 
 | 分类 | 内容 |
 |------|------|
 | API 概览 | 区域端点（NA/EU/FE）、版本策略 |
 | 核心概念 | 错误处理、限流、配额、Computed Status |
-| 认证 | OAuth 2.0 / Login with Amazon |
+| 认证 | OAuth 2.0 / Login with Amazon（完整流程指南） |
 | 数据模型 | Campaigns、Ad Groups、Targets、Ads、Enums |
 | 产品 API | Sponsored Products、Sponsored Brands (v3/v4)、Sponsored Display、Sponsored TV |
 | DSP API | Measurement、Audiences、Frequency、Forecasts、Conversions |
 | AMC API | Administration、Reporting、Rule-based Audiences、Custom Models、SQL 语法 |
-| 其他 | Reporting v3、Billing、Portfolios、Profiles、Attribution、Marketing Stream |
+| 实操指南 | 端点参考表、代码示例、Entity 参数矩阵、Reporting v3、Exports、Marketing Stream |
+| v1 CRUD | Campaign/AdGroup/Target/Ad/AdAssociation 的完整 CRUD 文档 |
+| 其他 | Billing、Portfolios、Profiles、Attribution |
 
 ### AMC 数据表（19 张表）
 
@@ -66,6 +78,18 @@ knowledge_base/
 | **付费功能** | `conversions_all`, `audience_segment_membership`, `amazon_your_garage`, `brand_store_insights`, `amazon_retail_purchase`, `prime_video_channel_insights`, `experian_vehicle_purchases`, `cpg_insights_stream` |
 
 每张表包含：完整字段列表、数据类型、字段描述、聚合阈值等级（NONE / LOW / MEDIUM / HIGH / VERY_HIGH / INTERNAL）。
+
+### Selling Partner API（17 个文件）
+
+| 分类 | API | 说明 |
+|------|-----|------|
+| **概念** | — | SP-API 概述、与 Ads API 对比、OAuth 认证、区域端点、限流、错误处理 |
+| **订单 & 履约** | Orders / FBA Inventory / Fulfillment Inbound | 订单查询、FBA 库存、入仓发货 |
+| **商品 & Listing** | Catalog Items / Listings Items | ASIN 详情、Listing CRUD |
+| **定价** | Product Pricing | 竞品价格、Buy Box |
+| **数据 & 报告** | Reports / Data Kiosk / Notifications | 报告下载、GraphQL 查询、事件推送 |
+| **批量操作** | Feeds | 批量上传（价格/库存/商品） |
+| **财务** | Finances | 财务交易、结算 |
 
 ## 安装
 
@@ -108,7 +132,7 @@ cd amazon-ads-knowledge-base-v2
 
 ### `/ads` 命令
 
-统一入口，自动判断问题类型：
+Amazon Ads + AMC 统一入口，自动判断问题类型：
 
 ```
 /ads Sponsored Products 的 API endpoint 是什么？
@@ -117,13 +141,27 @@ cd amazon-ads-knowledge-base-v2
 /ads 如何通过 API 提交 AMC 查询？
 ```
 
-### `ads-expert` Agent
+### `/sp` 命令
 
-对话中提到广告相关话题时自动调度，无需手动触发：
+Selling Partner API 统一入口：
+
+```
+/sp 如何查询订单列表？
+/sp FBA 入仓的 API 流程是什么？
+/sp 怎么用 Reports API 下载库存报告？
+/sp Listing 更新用 PUT 还是 PATCH？
+```
+
+### `ads-expert` / `sp-expert` Agent
+
+对话中提到广告或卖家运营相关话题时自动调度，无需手动触发：
 
 ```
 你：帮我写一个分析 SP 广告每日表现的 AMC SQL
 Claude：（自动调度 ads-expert agent，读取知识库，编写 SQL）
+
+你：帮我查一下 Orders API 的 rate limit
+Claude：（自动调度 sp-expert agent，查阅知识库，给出答案）
 ```
 
 ### 在线查询
@@ -143,8 +181,9 @@ Claude：（自动调度 ads-expert agent，读取知识库，编写 SQL）
 
 ## 数据来源
 
-- API 文档：[Amazon Ads API Documentation](https://advertising.amazon.com/API/docs/en-us/)
+- Ads API 文档：[Amazon Ads API Documentation](https://advertising.amazon.com/API/docs/en-us/)
 - AMC 表 schema：[AMC Data Sources](https://advertising.amazon.com/API/docs/en-us/guides/amazon-marketing-cloud/datasources/overview)
+- SP-API 文档：[Selling Partner API Documentation](https://developer-docs.amazon.com/sp-api/)
 
 ## 许可证
 
@@ -156,20 +195,20 @@ MIT
 
 ## English
 
-[中文说明](#amazon-ads-knowledge-base-for-claude-code)
+[中文说明](#amazon-ads--sp-api-knowledge-base-for-claude-code)
 
-A comprehensive Amazon Advertising knowledge base designed for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Once installed, Claude can answer Amazon Ads API questions, write AMC SQL queries, and explain advertising platform concepts.
+A comprehensive Amazon Advertising + Selling Partner API knowledge base designed for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Once installed, Claude can answer Amazon Ads API questions, write AMC SQL queries, look up SP-API endpoint usage, and explain advertising and seller platform concepts.
 
 ### What's Included
 
 | Component | Count | Description |
 |-----------|-------|-------------|
-| Amazon Ads API docs | 56 files | API endpoints, authentication, data models for all ad products |
+| Amazon Ads API docs | 83 files | API endpoints, authentication, data models, practical guides for all ad products |
 | AMC table schemas | 19 tables | Full field definitions with data types and aggregation thresholds |
-| AMC concepts | 4 docs | Overview, aggregation thresholds, API guide, workflow management |
-| AMC SQL reference | 3 docs | Functions, expressions, limitations |
-| Agent | 1 | `ads-expert` — auto-dispatched for ad-related conversations |
-| Command | 1 | `/ads` — unified entry point for all queries |
+| AMC concepts & SQL | 8 docs | Overview, aggregation thresholds, API guide, workflow management, functions, expressions |
+| Selling Partner API docs | 17 files | Core seller APIs: Orders, Inventory, Listings, Reports, Feeds, etc. |
+| Agents | 2 | `ads-expert` (Ads + AMC), `sp-expert` (SP-API) — auto-dispatched |
+| Commands | 2 | `/ads` and `/sp` — unified entry points |
 
 ### AMC Tables
 
@@ -181,6 +220,18 @@ A comprehensive Amazon Advertising knowledge base designed for [Claude Code](htt
 | **Amazon Live** | `amazon_live_traffic` |
 | **Paid Features** | `conversions_all`, `audience_segment_membership`, `amazon_your_garage`, `brand_store_insights`, `amazon_retail_purchase`, `prime_video_channel_insights`, `experian_vehicle_purchases`, `cpg_insights_stream` |
 
+### Selling Partner API
+
+| Category | APIs | Description |
+|----------|------|-------------|
+| **Concepts** | — | Overview, authentication, endpoints, rate limits, error handling |
+| **Orders & Fulfillment** | Orders / FBA Inventory / Fulfillment Inbound | Order queries, FBA inventory, inbound shipments |
+| **Listings & Catalog** | Catalog Items / Listings Items | ASIN details, listing CRUD |
+| **Pricing** | Product Pricing | Competitive prices, Buy Box |
+| **Data & Reporting** | Reports / Data Kiosk / Notifications | Report downloads, GraphQL queries, event subscriptions |
+| **Batch Operations** | Feeds | Bulk uploads (pricing/inventory/listings) |
+| **Finances** | Finances | Financial transactions, settlements |
+
 ### Installation
 
 #### Option 1: Install into an existing project (recommended)
@@ -191,7 +242,7 @@ git clone https://github.com/HS-Jack-YZY/amazon-ads-knowledge-base-v2.git
 ./amazon-ads-knowledge-base-v2/install.sh
 ```
 
-The install script copies the knowledge base, agent, and command to the correct locations in your project root, and updates `CLAUDE.md`. You can remove the cloned subdirectory after installation:
+The install script copies the knowledge base, agents, and commands to the correct locations in your project root, and updates `CLAUDE.md`. You can remove the cloned subdirectory after installation:
 
 ```bash
 rm -rf amazon-ads-knowledge-base-v2
@@ -208,7 +259,7 @@ git clone https://github.com/HS-Jack-YZY/amazon-ads-knowledge-base-v2.git
 rm -rf amazon-ads-knowledge-base-v2
 ```
 
-`--update` overwrites all installed files (knowledge base, agent, command, CLAUDE.md config block) to match the latest version.
+`--update` overwrites all installed files (knowledge base, agents, commands, CLAUDE.md config block) to match the latest version.
 
 #### Option 2: Use as a standalone project
 
@@ -229,13 +280,22 @@ cd amazon-ads-knowledge-base-v2
 /ads How to submit an AMC query via API?
 ```
 
-#### `ads-expert` Agent
+#### `/sp` Command
 
-Automatically dispatched when ad-related topics are detected in conversation — no manual invocation needed.
+```
+/sp How to query the order list?
+/sp What is the FBA inbound shipment API workflow?
+/sp How to download an inventory report via Reports API?
+/sp Should I use PUT or PATCH for listing updates?
+```
+
+#### `ads-expert` / `sp-expert` Agent
+
+Automatically dispatched when ad-related or seller-related topics are detected in conversation — no manual invocation needed.
 
 #### Online Fallback
 
-When local knowledge base doesn't have the answer, the agent automatically browses Amazon's official documentation via Playwright.
+When the local knowledge base doesn't have the answer, agents automatically browse Amazon's official documentation via Playwright.
 
 ### Key AMC SQL Rules
 
@@ -248,8 +308,9 @@ When local knowledge base doesn't have the answer, the agent automatically brows
 
 ### Data Sources
 
-- API docs: [Amazon Ads API Documentation](https://advertising.amazon.com/API/docs/en-us/)
+- Ads API docs: [Amazon Ads API Documentation](https://advertising.amazon.com/API/docs/en-us/)
 - AMC schemas: [AMC Data Sources](https://advertising.amazon.com/API/docs/en-us/guides/amazon-marketing-cloud/datasources/overview)
+- SP-API docs: [Selling Partner API Documentation](https://developer-docs.amazon.com/sp-api/)
 
 ### License
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Amazon Ads Knowledge Base - 安装/更新脚本
+# Amazon Ads & SP-API Knowledge Base - 安装/更新脚本
 # 将知识库、agent、command 安装到目标项目目录
 
 set -e
@@ -8,15 +8,17 @@ set -e
 write_claude_config() {
     cat >> "$1" << 'CLAUDE_EOF'
 
-## Amazon Ads Knowledge Base
+## Amazon Ads & SP-API Knowledge Base
 
 ### Agents
 
 - **ads-expert** (`.claude/agents/ads-expert.md`): Amazon Ads 综合专家，自动识别 API 和 AMC 相关对话
+- **sp-expert** (`.claude/agents/sp-expert.md`): Amazon SP-API 综合专家，自动识别卖家运营 API 相关对话
 
 ### Commands
 
 - `/ads <question>`: Amazon Ads 综合助手，自动判断问题类型（API / AMC SQL / 概念问答）
+- `/sp <question>`: Amazon SP-API 综合助手，自动判断问题类型（API 调用 / 业务操作 / 概念问答）
 
 ### AMC SQL 规则
 
@@ -25,6 +27,14 @@ write_claude_config() {
 1. 先读取 `knowledge_base/amc/README.md` 获取表索引和 SQL 技巧
 2. 根据需求读取 `knowledge_base/amc/` 下对应的表结构文件
 3. 编写 SQL 时严格遵守聚合阈值规则（VERY_HIGH 字段不能出现在最终 SELECT）
+
+### SP-API 规则
+
+当用户提到 Selling Partner API、SP-API 或卖家运营相关 API 时：
+
+1. 先读取 `knowledge_base/selling-partner-api/INDEX.md` 获取 API 索引
+2. 根据需求读取对应的 concepts/ 或 resources/ 文件
+3. 注意 SP-API 与 Ads API 的认证 Header 差异
 
 <!-- END Amazon Ads Knowledge Base -->
 CLAUDE_EOF
@@ -68,16 +78,16 @@ if [ ! -d "$TARGET_DIR" ]; then
 fi
 
 if [ "$UPDATE_MODE" = true ]; then
-    echo "=== Amazon Ads Knowledge Base Updater ==="
+    echo "=== Amazon Ads & SP-API Knowledge Base Updater ==="
 else
-    echo "=== Amazon Ads Knowledge Base Installer ==="
+    echo "=== Amazon Ads & SP-API Knowledge Base Installer ==="
 fi
 echo "源目录: $SCRIPT_DIR"
 echo "目标目录: $TARGET_DIR"
 echo ""
 
 # 需要安装的文件列表
-CLAUDE_FILES="agents/ads-expert.md commands/ads.md skills/learned/amc-field-value-discovery.md"
+CLAUDE_FILES="agents/ads-expert.md agents/sp-expert.md commands/ads.md commands/sp.md skills/learned/amc-field-value-discovery.md"
 
 if [ "$UPDATE_MODE" = true ]; then
     # ===== 更新模式：覆盖所有文件 =====
@@ -96,7 +106,7 @@ if [ "$UPDATE_MODE" = true ]; then
 
     echo "[3/3] 更新 CLAUDE.md..."
     CLAUDE_MD="$TARGET_DIR/CLAUDE.md"
-    MARKER_START="## Amazon Ads Knowledge Base"
+    MARKER_START="## Amazon Ads"
     MARKER_END="<!-- END Amazon Ads Knowledge Base -->"
 
     if [ -f "$CLAUDE_MD" ]; then
@@ -139,7 +149,7 @@ else
 
     echo "[3/4] 更新 CLAUDE.md..."
     CLAUDE_MD="$TARGET_DIR/CLAUDE.md"
-    if [ -f "$CLAUDE_MD" ] && grep -q "## Amazon Ads Knowledge Base" "$CLAUDE_MD"; then
+    if [ -f "$CLAUDE_MD" ] && grep -q "## Amazon Ads" "$CLAUDE_MD"; then
         echo "  ⚠ CLAUDE.md 中已包含 Amazon Ads 配置，跳过"
     else
         write_claude_config "$CLAUDE_MD"
@@ -152,8 +162,10 @@ fi
 echo ""
 echo "可用命令："
 echo "  /ads <问题>     查询 Amazon Ads API 或编写 AMC SQL"
-echo "  对话中提到广告相关话题时，ads-expert agent 会自动调度"
+echo "  /sp <问题>      查询 Selling Partner API"
+echo "  对话中提到广告或卖家运营相关话题时，agent 会自动调度"
 echo ""
 echo "知识库内容："
-echo "  knowledge_base/amazon-ads-api/  Amazon Ads API 文档"
-echo "  knowledge_base/amc/             AMC 表 schema + SQL 参考"
+echo "  knowledge_base/amazon-ads-api/       Amazon Ads API 文档（83 个文件）"
+echo "  knowledge_base/amc/                  AMC 表 schema + SQL 参考（27 个文件）"
+echo "  knowledge_base/selling-partner-api/  Selling Partner API 文档（17 个文件）"
