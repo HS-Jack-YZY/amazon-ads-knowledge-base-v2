@@ -40,6 +40,34 @@
 - [Code Examples (Python)](guides/code-examples.md) ★ End-to-end code examples for common operations
 - [Authentication](guides/authentication.md)
 
+#### Authorization (OAuth 2.0 Flow)
+- [Authorization Overview](guides/authorization-overview.md) — OAuth 2.0 flow, required headers
+- [Authorization Grants](guides/authorization-grants.md) — Consent URL, authorization codes
+- [Access Tokens](guides/authorization-access-tokens.md) — Token retrieval, refresh, regional endpoints
+- [Profiles](guides/authorization-profiles.md) — Profile retrieval, types, regional behavior
+
+#### Campaign Management Entities (v1 Common Model)
+- [Entities Overview](guides/campaign-mgmt-entities-overview.md) — 5 entity types, hierarchy
+- [Campaign Entity](guides/campaign-mgmt-entities-campaign.md) ★ All parameters by ad product (SP/SB/DSP)
+- [AdGroup Entity](guides/campaign-mgmt-entities-ad-group.md) ★ Parameters, bid, targeting settings
+- [Ad Entity](guides/campaign-mgmt-entities-ad.md) ★ Creative types (product/component/display/video/audio)
+- [Target Entity](guides/campaign-mgmt-entities-target.md) ★ 24+ target types (keyword/product/audience/DSP)
+- [AdAssociation Entity](guides/campaign-mgmt-entities-ad-association.md) — DSP only
+
+#### Reporting v3
+- [Report Types](guides/reporting-v3-report-types.md) ★ Report types by ad product (SP/SB/SD/STV/DSP)
+- [Reporting Columns (Metrics)](guides/reporting-v3-columns.md) ★ All metrics with types and report type mappings
+
+#### Exports API
+- [Exports Overview](guides/exports-overview.md) — Async metadata retrieval
+- [Campaigns Model](guides/exports-campaigns.md)
+- [Ad Groups Model](guides/exports-ad-groups.md)
+- [Targets Model](guides/exports-targets.md)
+- [Ads Model](guides/exports-ads.md)
+
+#### Amazon Marketing Stream
+- [Data Guide](guides/marketing-stream-data-guide.md) ★ All datasets, regional availability, subscription endpoints
+
 ### 5. Amazon Ads API v1
 - [V1 Overview](amazon-ads-v1/overview.md)
 - [V1 Get Started](amazon-ads-v1/getting-started.md)

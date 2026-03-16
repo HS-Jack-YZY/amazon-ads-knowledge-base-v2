@@ -20,9 +20,16 @@
   - 查端点路径 → `knowledge_base/amazon-ads-api/guides/api-endpoints-reference.md`
   - 要代码示例 → `knowledge_base/amazon-ads-api/guides/code-examples.md`
   - 分页/批量/重试 → `knowledge_base/amazon-ads-api/guides/pagination-and-batch.md`
+  - 认证/OAuth → `knowledge_base/amazon-ads-api/guides/authorization-overview.md`（详细流程）
+  - Token 获取/刷新 → `knowledge_base/amazon-ads-api/guides/authorization-access-tokens.md`
+  - Profile 检索 → `knowledge_base/amazon-ads-api/guides/authorization-profiles.md`
+  - Campaign/AdGroup/Target/Ad 参数详情 → `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-*.md`
   - Campaign/AdGroup/Target/Ad CRUD → `knowledge_base/amazon-ads-api/resources/*-v1.md`
-  - Reporting → `knowledge_base/amazon-ads-api/resources/reporting-v3.md`
-  - 认证 → `knowledge_base/amazon-ads-api/guides/authentication.md`
+  - Reporting 报告类型 → `knowledge_base/amazon-ads-api/guides/reporting-v3-report-types.md`
+  - Reporting 报告指标 → `knowledge_base/amazon-ads-api/guides/reporting-v3-columns.md`
+  - Reporting API → `knowledge_base/amazon-ads-api/resources/reporting-v3.md`
+  - Exports 导出 → `knowledge_base/amazon-ads-api/guides/exports-overview.md`
+  - Marketing Stream → `knowledge_base/amazon-ads-api/guides/marketing-stream-data-guide.md`
   - 其他产品详情 → `knowledge_base/amazon-ads-api/INDEX.md` 定位对应文件
 - **AMC SQL**：先读 `knowledge_base/amc/README.md`，再读对应表结构文件和 SQL 参考
 - **AMC 概念**：先读 `knowledge_base/amc/README.md`，再读 `knowledge_base/amc/concepts/` 下对应文档

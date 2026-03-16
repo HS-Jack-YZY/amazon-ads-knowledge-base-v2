@@ -37,7 +37,25 @@ model: sonnet
 | `knowledge_base/amazon-ads-api/guides/api-endpoints-reference.md` | **所有产品的完整端点路径表** | 查端点路径（优先读） |
 | `knowledge_base/amazon-ads-api/guides/pagination-and-batch.md` | **分页、批量操作、异步模式** | 分页/批量/重试 |
 | `knowledge_base/amazon-ads-api/guides/code-examples.md` | **Python 端到端代码示例** | 用户需要代码示例 |
-| `knowledge_base/amazon-ads-api/guides/authentication.md` | OAuth、LWA、Token | 认证问题 |
+| `knowledge_base/amazon-ads-api/guides/authentication.md` | OAuth、LWA、Token（旧版） | 认证问题（基础） |
+| `knowledge_base/amazon-ads-api/guides/authorization-overview.md` | **OAuth 2.0 完整流程 + 必要 Header** | 认证问题（详细） |
+| `knowledge_base/amazon-ads-api/guides/authorization-grants.md` | **授权码获取（Consent URL + 参数）** | 认证：获取授权码 |
+| `knowledge_base/amazon-ads-api/guides/authorization-access-tokens.md` | **Token 获取/刷新 + curl 示例** | 认证：获取/刷新 Token |
+| `knowledge_base/amazon-ads-api/guides/authorization-profiles.md` | **Profile 检索 + 类型 + 区域行为** | 认证：获取 Profile ID |
+| `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-overview.md` | **v1 Entity 概览** | Entity 层级关系 |
+| `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-campaign.md` | **Campaign 参数矩阵（SP/SB/DSP）** | Campaign 参数详情 |
+| `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-ad-group.md` | **AdGroup 参数矩阵** | AdGroup 参数详情 |
+| `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-ad.md` | **Ad 参数 + 6 种 Creative 类型** | Ad/Creative 参数详情 |
+| `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-target.md` | **Target 参数 + 24 种定向类型** | 定向类型详情 |
+| `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-ad-association.md` | **AdAssociation（仅 DSP）** | DSP 广告关联 |
+| `knowledge_base/amazon-ads-api/guides/reporting-v3-report-types.md` | **19 种报告类型 × 5 个广告产品** | 报告类型查询 |
+| `knowledge_base/amazon-ads-api/guides/reporting-v3-columns.md` | **所有报告指标（类型+描述+适用报告）** | 报告指标/列查询 |
+| `knowledge_base/amazon-ads-api/guides/exports-overview.md` | **Exports API 概览** | 批量导出元数据 |
+| `knowledge_base/amazon-ads-api/guides/exports-campaigns.md` | Exports Campaign schema | 导出 Campaign |
+| `knowledge_base/amazon-ads-api/guides/exports-ad-groups.md` | Exports AdGroup schema | 导出 AdGroup |
+| `knowledge_base/amazon-ads-api/guides/exports-targets.md` | Exports Target schema | 导出 Target |
+| `knowledge_base/amazon-ads-api/guides/exports-ads.md` | Exports Ad schema + JSON 示例 | 导出 Ad |
+| `knowledge_base/amazon-ads-api/guides/marketing-stream-data-guide.md` | **所有 Stream 数据集 + 订阅端点** | Marketing Stream |
 | `knowledge_base/amazon-ads-api/resources/campaigns-v1.md` | Campaign CRUD + JSON 示例 | Campaign 操作 |
 | `knowledge_base/amazon-ads-api/resources/ad-groups-v1.md` | Ad Group CRUD + JSON 示例 | Ad Group 操作 |
 | `knowledge_base/amazon-ads-api/resources/targets-v1.md` | 关键词/产品/受众定向 + JSON 示例 | 定向操作 |
@@ -172,7 +190,25 @@ IF(SECONDS_BETWEEN(traffic_event_dt_utc, conversion_event_dt_utc) <= 14*24*60*60
 - `knowledge_base/amazon-ads-api/guides/api-endpoints-reference.md` - **完整端点路径表**（所有产品）
 - `knowledge_base/amazon-ads-api/guides/pagination-and-batch.md` - **分页、批量操作、异步模式**
 - `knowledge_base/amazon-ads-api/guides/code-examples.md` - **Python 端到端代码示例**
-- `knowledge_base/amazon-ads-api/guides/authentication.md` - OAuth 认证
+- `knowledge_base/amazon-ads-api/guides/authentication.md` - OAuth 认证（基础）
+- `knowledge_base/amazon-ads-api/guides/authorization-overview.md` - **OAuth 2.0 完整流程 + 必要 Header**
+- `knowledge_base/amazon-ads-api/guides/authorization-grants.md` - **授权码获取（Consent URL + 参数）**
+- `knowledge_base/amazon-ads-api/guides/authorization-access-tokens.md` - **Token 获取/刷新 + curl 示例**
+- `knowledge_base/amazon-ads-api/guides/authorization-profiles.md` - **Profile 检索 + 类型 + 区域行为**
+- `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-overview.md` - v1 Entity 概览
+- `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-campaign.md` - **Campaign 参数矩阵（SP/SB/DSP）**
+- `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-ad-group.md` - **AdGroup 参数矩阵**
+- `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-ad.md` - **Ad 参数 + 6 种 Creative 类型**
+- `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-target.md` - **Target 参数 + 24 种定向类型**
+- `knowledge_base/amazon-ads-api/guides/campaign-mgmt-entities-ad-association.md` - AdAssociation（仅 DSP）
+- `knowledge_base/amazon-ads-api/guides/reporting-v3-report-types.md` - **19 种报告类型 × 5 个广告产品**
+- `knowledge_base/amazon-ads-api/guides/reporting-v3-columns.md` - **所有报告指标（类型+描述+适用报告）**
+- `knowledge_base/amazon-ads-api/guides/exports-overview.md` - Exports API 概览
+- `knowledge_base/amazon-ads-api/guides/exports-campaigns.md` - Exports Campaign schema
+- `knowledge_base/amazon-ads-api/guides/exports-ad-groups.md` - Exports AdGroup schema
+- `knowledge_base/amazon-ads-api/guides/exports-targets.md` - Exports Target schema
+- `knowledge_base/amazon-ads-api/guides/exports-ads.md` - Exports Ad schema + JSON 示例
+- `knowledge_base/amazon-ads-api/guides/marketing-stream-data-guide.md` - **所有 Stream 数据集 + 订阅端点**
 - `knowledge_base/amazon-ads-api/resources/campaigns-v1.md` - Campaign CRUD + JSON 示例
 - `knowledge_base/amazon-ads-api/resources/ad-groups-v1.md` - Ad Group CRUD + JSON 示例
 - `knowledge_base/amazon-ads-api/resources/targets-v1.md` - 关键词/产品/受众定向 + JSON 示例

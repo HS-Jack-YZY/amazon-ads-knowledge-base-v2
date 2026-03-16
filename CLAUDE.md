@@ -31,6 +31,42 @@ Amazon Advertising API + AMC 综合知识库项目。
 - **`guides/pagination-and-batch.md`** — 3 种分页模式、批量操作 207 响应处理、异步模式、限流重试
 - **`guides/code-examples.md`** — Python 端到端代码示例（认证、Profile、Campaign CRUD、Report、AMC SQL）
 
+#### 认证指南（guides/authorization-*）
+
+OAuth 2.0 完整流程文档：
+
+- **`guides/authorization-overview.md`** — OAuth 2.0 流程概述、三个必要 Header
+- **`guides/authorization-grants.md`** — 授权码获取（Consent URL、区域端点、参数）
+- **`guides/authorization-access-tokens.md`** — Token 获取/刷新（curl 示例、60 分钟有效期）
+- **`guides/authorization-profiles.md`** — Profile 检索（区域行为、账户类型：vendor/seller/agency）
+
+#### Campaign Management Entity 教程（guides/campaign-mgmt-*）
+
+v1 通用模型下 5 个 entity 的参数矩阵和嵌套对象详解：
+
+- **`guides/campaign-mgmt-entities-overview.md`** — 5 个 entity 概览和层级关系
+- **`guides/campaign-mgmt-entities-campaign.md`** — Campaign 参数（SP/SB/DSP 对比表）
+- **`guides/campaign-mgmt-entities-ad-group.md`** — AdGroup 参数（Bid、Targeting Settings）
+- **`guides/campaign-mgmt-entities-ad.md`** — Ad 参数（6 种 Creative 类型详解）
+- **`guides/campaign-mgmt-entities-target.md`** — Target 参数（24+ 种定向类型）
+- **`guides/campaign-mgmt-entities-ad-association.md`** — AdAssociation（仅 DSP）
+
+#### Reporting v3 教程（guides/reporting-v3-*）
+
+- **`guides/reporting-v3-report-types.md`** — 19 种报告类型 × 5 个广告产品的可用性矩阵
+- **`guides/reporting-v3-columns.md`** — 所有报告指标（~100KB），含类型、描述和适用报告类型
+
+#### Exports API 教程（guides/exports-*）
+
+异步批量导出 Campaign 元数据：
+
+- **`guides/exports-overview.md`** — Exports vs Reports vs List，并发限制
+- **`guides/exports-campaigns.md`** / **`exports-ad-groups.md`** / **`exports-targets.md`** / **`exports-ads.md`** — 各 entity 的导出 schema 和 JSON 示例
+
+#### Marketing Stream 数据指南
+
+- **`guides/marketing-stream-data-guide.md`** — 所有 Stream 数据集（DSP/SP/SD/SB Performance + 运营 + Campaign Management），订阅端点和区域可用性
+
 #### v1 CRUD 参考（resources/）
 
 带 JSON 请求/响应示例的 CRUD 操作文档：
@@ -68,7 +104,12 @@ Amazon Advertising API + AMC 综合知识库项目。
 
 概念/指南页面可直接从 CloudFront CDN 获取原始 Markdown：
 ```bash
+# Reference 页面（concepts, common-models 等）
 curl -s "https://d3a0d0y2hgofx6.cloudfront.net/en-us/reference/concepts/{page}.md"
+
+# Developer Guides 页面（未入库的教程可实时获取）
+curl -s "https://d3a0d0y2hgofx6.cloudfront.net/en-us/guides/{path}.md"
+# 例如：guides/sponsored-products/get-started/manual-campaigns.md
 ```
 
 OpenAPI 规范可从 contracts.json 索引获取：
