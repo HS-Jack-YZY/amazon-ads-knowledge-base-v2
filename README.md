@@ -83,6 +83,19 @@ git clone https://github.com/HS-Jack-YZY/amazon-ads-knowledge-base-v2.git
 rm -rf amazon-ads-knowledge-base-v2
 ```
 
+### 更新
+
+当知识库有新版本时，重新 clone 并使用 `--update` 参数：
+
+```bash
+cd ~/your-project
+git clone https://github.com/HS-Jack-YZY/amazon-ads-knowledge-base-v2.git
+./amazon-ads-knowledge-base-v2/install.sh --update
+rm -rf amazon-ads-knowledge-base-v2
+```
+
+`--update` 会覆盖所有已安装的文件（知识库、agent、command、CLAUDE.md 配置块），确保与最新版本一致。
+
 ### 方式二：直接作为独立项目使用
 
 ```bash
@@ -183,6 +196,19 @@ The install script copies the knowledge base, agent, and command to the correct 
 ```bash
 rm -rf amazon-ads-knowledge-base-v2
 ```
+
+#### Updating
+
+When a new version is available, re-clone and use `--update`:
+
+```bash
+cd ~/your-project
+git clone https://github.com/HS-Jack-YZY/amazon-ads-knowledge-base-v2.git
+./amazon-ads-knowledge-base-v2/install.sh --update
+rm -rf amazon-ads-knowledge-base-v2
+```
+
+`--update` overwrites all installed files (knowledge base, agent, command, CLAUDE.md config block) to match the latest version.
 
 #### Option 2: Use as a standalone project
 
