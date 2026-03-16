@@ -145,6 +145,157 @@ see [Retry logic with exponential backoff](concepts/rate-limiting#use-retry-logi
 
 ---
 
+## Report Type IDs
+
+| Product | Report Type IDs |
+|---------|----------------|
+| **Sponsored Products** | spCampaigns, spTargeting, spSearchTerm, spAdvertisedProduct, spPurchasedProduct, spGrossAndInvalids |
+| **Sponsored Brands** | sbCampaigns, sbAdGroup, sbAds, sbTargeting, sbSearchTerm, sbCampaignPlacement, sbPurchasedProduct, sbGrossAndInvalids |
+| **Sponsored Display** | sdCampaigns, sdAdGroup, sdAdvertisedProduct, sdTargeting, sdPurchasedProduct, sdGrossAndInvalids |
+| **Sponsored TV** | stCampaigns, stTargeting |
+| **DSP** | dspCampaign, dspAudience, dspInventory, dspProduct, dspGeo, dspTech, dspAudioAndVideo |
+
+---
+
+## Request / Response Examples
+
+### Create Report Request
+
+```
+POST /reporting/reports
+Content-Type: application/vnd.createasyncreportrequest.v3+json
+Authorization: Bearer {access_token}
+Amazon-Advertising-API-ClientId: {client_id}
+Amazon-Advertising-API-Scope: {profile_id}
+```
+
+```json
+{
+  "name": "SP Campaign Report - March 2026",
+  "startDate": "2026-03-01",
+  "endDate": "2026-03-15",
+  "configuration": {
+    "adProduct": "SPONSORED_PRODUCTS",
+    "reportTypeId": "spCampaigns",
+    "groupBy": ["campaign"],
+    "columns": [
+      "campaignName",
+      "campaignId",
+      "campaignStatus",
+      "campaignBudgetAmount",
+      "impressions",
+      "clicks",
+      "cost",
+      "purchases1d",
+      "purchases7d",
+      "purchases14d",
+      "purchases30d",
+      "sales1d",
+      "sales7d",
+      "sales14d",
+      "sales30d"
+    ],
+    "filters": [
+      {
+        "field": "campaignStatus",
+        "values": ["ENABLED", "PAUSED"]
+      }
+    ],
+    "timeUnit": "DAILY",
+    "format": "GZIP_JSON"
+  }
+}
+```
+
+### Create Report Response (200)
+
+```json
+{
+  "reportId": "amzn1.clicksAPI.v1.p1.ABC123DEF456",
+  "status": "PENDING",
+  "configuration": {
+    "adProduct": "SPONSORED_PRODUCTS",
+    "reportTypeId": "spCampaigns",
+    "groupBy": ["campaign"],
+    "columns": ["campaignName", "campaignId", "impressions", "clicks", "cost"],
+    "timeUnit": "DAILY",
+    "format": "GZIP_JSON"
+  },
+  "startDate": "2026-03-01",
+  "endDate": "2026-03-15",
+  "createdAt": "2026-03-16T10:00:00.000Z",
+  "updatedAt": "2026-03-16T10:00:00.000Z",
+  "name": "SP Campaign Report - March 2026",
+  "url": null,
+  "urlExpiresAt": null,
+  "fileSize": null,
+  "generatedAt": null,
+  "failureReason": null
+}
+```
+
+### Get Report Status (Completed)
+
+```
+GET /reporting/reports/amzn1.clicksAPI.v1.p1.ABC123DEF456
+```
+
+```json
+{
+  "reportId": "amzn1.clicksAPI.v1.p1.ABC123DEF456",
+  "status": "COMPLETED",
+  "startDate": "2026-03-01",
+  "endDate": "2026-03-15",
+  "createdAt": "2026-03-16T10:00:00.000Z",
+  "updatedAt": "2026-03-16T10:02:30.000Z",
+  "generatedAt": "2026-03-16T10:02:30.000Z",
+  "url": "https://advertising-api-report.s3.amazonaws.com/...",
+  "urlExpiresAt": "2026-03-16T11:02:30.000Z",
+  "fileSize": 12345
+}
+```
+
+### Downloaded Report Data (GZIP_JSON decompressed)
+
+```json
+[
+  {
+    "campaignName": "SP Auto Campaign",
+    "campaignId": "123456789",
+    "campaignStatus": "ENABLED",
+    "campaignBudgetAmount": 50.0,
+    "date": "2026-03-01",
+    "impressions": 15000,
+    "clicks": 250,
+    "cost": 125.50,
+    "purchases1d": 12,
+    "sales1d": 450.00
+  },
+  {
+    "campaignName": "SP Auto Campaign",
+    "campaignId": "123456789",
+    "campaignStatus": "ENABLED",
+    "campaignBudgetAmount": 50.0,
+    "date": "2026-03-02",
+    "impressions": 18200,
+    "clicks": 310,
+    "cost": 155.75,
+    "purchases1d": 15,
+    "sales1d": 580.00
+  }
+]
+```
+
+### Key Notes
+
+- **Format**: Only `GZIP_JSON` is supported. Download and decompress with gzip.
+- **Lookback**: Most reports support 95-day lookback window.
+- **URL expiry**: Download URLs expire after ~3600 seconds. Re-poll status to get a new URL.
+- **Processing time**: Reports can take up to 3 hours. Use exponential backoff polling.
+- **timeUnit**: `DAILY` returns one row per day per group-by dimension. `SUMMARY` aggregates the entire date range.
+
+---
+
 ## Schemas
 
 ### AsyncReport

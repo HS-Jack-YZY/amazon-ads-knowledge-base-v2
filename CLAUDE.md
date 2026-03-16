@@ -23,6 +23,25 @@ Amazon Advertising API + AMC 综合知识库项目。
 - 所有产品 API（SP、SB、SD、STV、DSP、AMC 等）
 - AMC SQL 语法基础和概述（合并自 AMC 知识库的优化版）
 
+#### 实操指南（guides/）
+
+当用户需要实际调用 API 时，优先参考这些文件：
+
+- **`guides/api-endpoints-reference.md`** — 所有产品的完整端点路径表（v1、SP、SB v4、SD、Reporting、AMC）
+- **`guides/pagination-and-batch.md`** — 3 种分页模式、批量操作 207 响应处理、异步模式、限流重试
+- **`guides/code-examples.md`** — Python 端到端代码示例（认证、Profile、Campaign CRUD、Report、AMC SQL）
+
+#### v1 CRUD 参考（resources/）
+
+带 JSON 请求/响应示例的 CRUD 操作文档：
+
+- `resources/campaigns-v1.md` — Campaign 创建/列表/更新（SP/SB/DSP 示例）
+- `resources/ad-groups-v1.md` — Ad Group CRUD
+- `resources/targets-v1.md` — 关键词 + 产品定向 + 受众定向
+- `resources/ads-v1.md` — Ad CRUD（含 SD/SB 广告类型）
+- `resources/ad-associations-v1.md` — Ad Association + 典型工作流
+- `resources/amc-reporting.md` — AMC Workflow 创建/执行/下载完整 API 文档
+
 ### AMC 知识库（领域层面）
 
 位于 `knowledge_base/amc/`，包含 AMC 表结构 + 概念文档 + SQL 参考：

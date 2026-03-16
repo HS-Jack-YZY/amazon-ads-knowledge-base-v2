@@ -34,12 +34,18 @@
 - [Ad Associations](common-models/ad-associations.md)
 - [Enums](common-models/enums.md)
 
-### 4. Amazon Ads API v1
+### 4. Guides (Implementation)
+- [API Endpoints Reference](guides/api-endpoints-reference.md) ★ Complete endpoint paths for all products
+- [Pagination & Batch Operations](guides/pagination-and-batch.md) ★ Pagination patterns, batch operations, async workflows
+- [Code Examples (Python)](guides/code-examples.md) ★ End-to-end code examples for common operations
+- [Authentication](guides/authentication.md)
+
+### 5. Amazon Ads API v1
 - [V1 Overview](amazon-ads-v1/overview.md)
 - [V1 Get Started](amazon-ads-v1/getting-started.md)
 - [Generate SDK from v1 Specs](amazon-ads-v1/generate-sdk.md)
 
-### 5. Resources - Accounts
+### 6. Resources - Accounts
 - [Account Management (beta)](resources/account-management.md)
 - [Profiles](resources/profiles.md)
 - [Manager Accounts](resources/manager-accounts.md)
@@ -47,43 +53,43 @@
 - [User Invitations](resources/user-invitations.md)
 - [User Permissions](resources/user-permissions.md)
 
-### 6. Resources - Reporting
+### 7. Resources - Reporting
 - [Version 3 Reporting](resources/reporting-v3.md)
 - [Brand Metrics (beta)](resources/brand-metrics.md)
 - [Brand Benchmarks](resources/brand-benchmarks.md)
 - [Store Insights](resources/store-insights.md)
 - [Marketing Mix Modeling (beta)](resources/marketing-mix-modeling.md)
 
-### 7. Resources - Campaign Management
+### 8. Resources - Campaign Management (v1 CRUD with examples)
 - [Campaigns (v1)](resources/campaigns-v1.md)
 - [Ad Groups (v1)](resources/ad-groups-v1.md)
 - [Targets (v1)](resources/targets-v1.md)
 - [Ads (v1)](resources/ads-v1.md)
 - [Ad Associations (v1)](resources/ad-associations-v1.md)
 
-### 8. Resources - Other
+### 9. Resources - Other
 - [Ads Data Manager](resources/ads-data-manager.md)
 - [Exports](resources/exports.md)
 
-### 9. Resources - Retail Ad Service
+### 10. Resources - Retail Ad Service
 - [Campaign Management](resources/retail-ad-service.md)
 - [Retailer Identity](resources/retailer-identity.md)
 
-### 10. Resources - Sponsored Products
+### 11. Resources - Sponsored Products
 (Uses Amazon Ads API v1)
 
-### 11. Resources - Sponsored Brands
+### 12. Resources - Sponsored Brands
 - [Version 4](resources/sponsored-brands-v4.md)
 - [Version 3](resources/sponsored-brands-v3.md)
 - [Category Benchmark](resources/sponsored-brands-category-benchmark.md)
 
-### 12. Resources - Sponsored Display
+### 13. Resources - Sponsored Display
 - [Campaign Management](resources/sponsored-display.md)
 
-### 13. Resources - Sponsored TV
+### 14. Resources - Sponsored TV
 - [Campaign Management (beta)](resources/sponsored-tv.md)
 
-### 14. Resources - Amazon DSP
+### 15. Resources - Amazon DSP
 - [Forecasts](resources/dsp-forecasts.md)
 - [Measurement (beta)](resources/dsp-measurement.md)
 - [Advertiser (beta)](resources/dsp-advertiser.md)
@@ -96,7 +102,7 @@
 - [Performance+ Insights (beta)](resources/dsp-campaign-insights.md)
 - [Quick Actions](resources/dsp-quick-actions.md)
 
-### 15. Resources - Amazon Marketing Cloud (AMC)
+### 16. Resources - Amazon Marketing Cloud (AMC)
 - [AMC Administration](resources/amc-administration.md)
 - [AMC Reporting](resources/amc-reporting.md)
 - [Rule-based Audiences](resources/amc-rba.md)
@@ -104,7 +110,7 @@
 - [Advertiser Data Upload](resources/amc-advertiser-data-upload.md)
 - [Custom Models](resources/amc-custom-models.md)
 
-### 16. Resources - Other Services
+### 17. Resources - Other Services
 - [Amazon Marketing Stream](resources/amazon-marketing-stream.md)
 - [Amazon Attribution](resources/amazon-attribution.md)
 - [Billing](resources/billing.md)
@@ -116,37 +122,37 @@
 - [Posts](resources/posts.md)
 - [Assets](resources/assets.md)
 
-### 17. Resources - Products & Discovery
+### 18. Resources - Products & Discovery
 - [Product Metadata](resources/product-metadata.md)
 - [Product Eligibility](resources/product-eligibility.md)
 - [Targetable Entities](resources/targetable-entities.md)
 - [Locations](resources/locations.md)
 
-### 18. Resources - Recommendations & Insights
+### 19. Resources - Recommendations & Insights
 - [Partner Opportunities](resources/partner-opportunities.md)
 - [Overlapping Audiences](resources/overlapping-audiences.md)
 - [Persona Builder](resources/persona-builder.md)
 - [Campaign Diagnostics](resources/campaign-diagnostics.md)
 
-### 19. Resources - Content & Moderation
+### 20. Resources - Content & Moderation
 - [Pre-moderation](resources/pre-moderation.md)
 - [Moderation](resources/moderation.md)
 - [Change History](resources/change-history.md)
 - [Ad Library](resources/ad-library.md)
 
-### 20. Resources - Media Planning
+### 21. Resources - Media Planning
 - [Reach and Performance Forecasting](resources/reach-performance-forecasting.md)
 - [Historic Reach](resources/historic-reach.md)
 
-### 21. Resources - Localization
+### 22. Resources - Localization
 - [Localization](resources/localization.md)
 - [Validation Configuration](resources/validation-configuration.md)
 
-### 22. Resources - Data Provider
+### 23. Resources - Data Provider
 - [Record Management](resources/data-provider-record.md)
 - [Hashed Records](resources/data-provider-hashed-records.md)
 
-### 23. Older Versions
+### 24. Older Versions
 - [DSP Reports (v2)](older/dsp-reports-v2.md)
 - [DSP Reports (v3)](older/dsp-reports-v3.md)
 - [DSP Bid Modifiers](older/dsp-bid-modifiers.md)

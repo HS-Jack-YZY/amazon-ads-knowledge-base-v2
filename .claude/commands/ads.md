@@ -16,10 +16,17 @@
 
 ### 第二步：读取对应知识库
 
-- **API 问题**：先读 `knowledge_base/amazon-ads-api/INDEX.md`，定位相关文件后读取
+- **API 调用 / 端点 / 代码示例**：
+  - 查端点路径 → `knowledge_base/amazon-ads-api/guides/api-endpoints-reference.md`
+  - 要代码示例 → `knowledge_base/amazon-ads-api/guides/code-examples.md`
+  - 分页/批量/重试 → `knowledge_base/amazon-ads-api/guides/pagination-and-batch.md`
+  - Campaign/AdGroup/Target/Ad CRUD → `knowledge_base/amazon-ads-api/resources/*-v1.md`
+  - Reporting → `knowledge_base/amazon-ads-api/resources/reporting-v3.md`
+  - 认证 → `knowledge_base/amazon-ads-api/guides/authentication.md`
+  - 其他产品详情 → `knowledge_base/amazon-ads-api/INDEX.md` 定位对应文件
 - **AMC SQL**：先读 `knowledge_base/amc/README.md`，再读对应表结构文件和 SQL 参考
 - **AMC 概念**：先读 `knowledge_base/amc/README.md`，再读 `knowledge_base/amc/concepts/` 下对应文档
-- **混合问题**（如"如何通过 API 提交 AMC 查询"）：同时参考两个知识库
+- **混合问题**（如"如何通过 API 提交 AMC 查询"）：同时参考 `knowledge_base/amazon-ads-api/resources/amc-reporting.md` 和 AMC 知识库
 
 ### 第三步：回答
 

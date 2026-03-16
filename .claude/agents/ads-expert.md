@@ -34,11 +34,21 @@ model: sonnet
 
 | 目录 | 内容 | 适用场景 |
 |------|------|---------|
+| `knowledge_base/amazon-ads-api/guides/api-endpoints-reference.md` | **所有产品的完整端点路径表** | 查端点路径（优先读） |
+| `knowledge_base/amazon-ads-api/guides/pagination-and-batch.md` | **分页、批量操作、异步模式** | 分页/批量/重试 |
+| `knowledge_base/amazon-ads-api/guides/code-examples.md` | **Python 端到端代码示例** | 用户需要代码示例 |
+| `knowledge_base/amazon-ads-api/guides/authentication.md` | OAuth、LWA、Token | 认证问题 |
+| `knowledge_base/amazon-ads-api/resources/campaigns-v1.md` | Campaign CRUD + JSON 示例 | Campaign 操作 |
+| `knowledge_base/amazon-ads-api/resources/ad-groups-v1.md` | Ad Group CRUD + JSON 示例 | Ad Group 操作 |
+| `knowledge_base/amazon-ads-api/resources/targets-v1.md` | 关键词/产品/受众定向 + JSON 示例 | 定向操作 |
+| `knowledge_base/amazon-ads-api/resources/ads-v1.md` | Ad CRUD + JSON 示例 | 广告创建 |
+| `knowledge_base/amazon-ads-api/resources/ad-associations-v1.md` | Ad Association + 典型工作流 | 广告关联 |
+| `knowledge_base/amazon-ads-api/resources/amc-reporting.md` | AMC Workflow 创建/执行/下载 | AMC 查询执行 |
+| `knowledge_base/amazon-ads-api/resources/reporting-v3.md` | Reporting v3 + Report Type 列表 + JSON 示例 | 报告 |
 | `knowledge_base/amazon-ads-api/QUICK-REFERENCE.md` | 概览、术语表 | 入门 |
 | `knowledge_base/amazon-ads-api/concepts/` | 错误、限流、配额、版本 | 概念问题 |
 | `knowledge_base/amazon-ads-api/common-models/` | Campaign、Ad Group、Target、Ad 数据模型 | 数据模型 |
-| `knowledge_base/amazon-ads-api/guides/authentication.md` | OAuth、LWA、Token | 认证问题 |
-| `knowledge_base/amazon-ads-api/resources/` | 各产品 API 端点（SP、SB、SD、STV、DSP、AMC） | API 端点 |
+| `knowledge_base/amazon-ads-api/resources/` | 各产品 API 端点（SP、SB、SD、STV、DSP、AMC） | 产品详情 |
 
 ---
 
@@ -159,10 +169,20 @@ IF(SECONDS_BETWEEN(traffic_event_dt_utc, conversion_event_dt_utc) <= 14*24*60*60
 ### API 文档
 - `knowledge_base/amazon-ads-api/INDEX.md` - API 文档总索引
 - `knowledge_base/amazon-ads-api/QUICK-REFERENCE.md` - 快速参考
+- `knowledge_base/amazon-ads-api/guides/api-endpoints-reference.md` - **完整端点路径表**（所有产品）
+- `knowledge_base/amazon-ads-api/guides/pagination-and-batch.md` - **分页、批量操作、异步模式**
+- `knowledge_base/amazon-ads-api/guides/code-examples.md` - **Python 端到端代码示例**
+- `knowledge_base/amazon-ads-api/guides/authentication.md` - OAuth 认证
+- `knowledge_base/amazon-ads-api/resources/campaigns-v1.md` - Campaign CRUD + JSON 示例
+- `knowledge_base/amazon-ads-api/resources/ad-groups-v1.md` - Ad Group CRUD + JSON 示例
+- `knowledge_base/amazon-ads-api/resources/targets-v1.md` - 关键词/产品/受众定向 + JSON 示例
+- `knowledge_base/amazon-ads-api/resources/ads-v1.md` - Ad CRUD + JSON 示例
+- `knowledge_base/amazon-ads-api/resources/ad-associations-v1.md` - Ad Association + 典型工作流
+- `knowledge_base/amazon-ads-api/resources/amc-reporting.md` - AMC Workflow API 完整文档
+- `knowledge_base/amazon-ads-api/resources/reporting-v3.md` - Reporting v3 + JSON 示例
 - `knowledge_base/amazon-ads-api/resources/` - 各产品 API 端点
 - `knowledge_base/amazon-ads-api/concepts/` - API 核心概念
 - `knowledge_base/amazon-ads-api/common-models/` - 通用数据模型
-- `knowledge_base/amazon-ads-api/guides/authentication.md` - OAuth 认证
 
 ### AMC 概念文档
 - `knowledge_base/amc/concepts/overview.md` - AMC 概述、功能、支持地区
